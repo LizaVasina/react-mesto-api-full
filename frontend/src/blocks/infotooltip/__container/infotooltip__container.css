@@ -1,0 +1,11 @@
+.infotooltip__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 60px;
+  min-width: 430px;
+  min-height: 330px;
+}

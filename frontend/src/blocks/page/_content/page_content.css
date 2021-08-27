@@ -1,0 +1,11 @@
+.page_content {
+  max-width: 882px;
+  width: 100%;
+  text-align: left;
+}
+
+@media screen and (max-width: 720px) {
+  .page_content {
+    text-align: center;
+  }
+}

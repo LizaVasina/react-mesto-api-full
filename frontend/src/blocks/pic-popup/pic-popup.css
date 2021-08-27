@@ -1,0 +1,12 @@
+.pic-popup {
+  padding-top: 40px;
+  margin: 0 auto;
+  /* justify-content: center;
+  align-items: flex-start; */
+}
+
+@media screen and (max-width: 425px) {
+  .pic-popup {
+    padding-top: 100px;
+  }
+}
