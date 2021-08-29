@@ -16,6 +16,7 @@ class Api {
     return fetch(`${this._url}cards`, {
       method: 'GET',
       credentials: 'include',
+      secure: true,
       headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -25,6 +26,7 @@ class Api {
     return fetch(`${this._url}cards`, {
       method: 'POST',
       credentials: 'include',
+      secure: true,
       headers: this._headers,
       body: JSON.stringify({
         name: cardName,
@@ -38,6 +40,7 @@ class Api {
     return fetch(`${this._url}cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
+      secure: true,
       headers: this._headers,
     })
     .then(res => this.handleOriginalResponse(res));
@@ -47,6 +50,7 @@ class Api {
     return fetch(`${this._url}users/me`, {
       method: 'GET',
       credentials: 'include',
+      secure: true,
       headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -56,6 +60,7 @@ class Api {
     return fetch(`${this._url}users/me`, {
       method: 'PATCH',
       credentials: 'include',
+      secure: true,
       headers: this._headers,
       body: JSON.stringify({
         name: newName,
@@ -69,6 +74,7 @@ class Api {
     return fetch(`${this._url}users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
+      secure: true,
       headers: this._headers,
       body: JSON.stringify({
         avatar: newAvatar
@@ -81,6 +87,7 @@ class Api {
     return fetch(`${this._url}cards/likes/${cardId}`, {
       method: 'PUT',
       credentials: 'include',
+      secure: true,
       headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -90,6 +97,7 @@ class Api {
     return fetch(`${this._url}cards/likes/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
+      secure: true,
       headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -98,6 +106,8 @@ class Api {
   changeLikeCardStatus(cardId, cardLiked) {
     return fetch(`${this._url}cards/likes/${cardId}`, {
       method: cardLiked ? 'DELETE' : 'PUT',
+      credentials: 'include',
+      secure: true,
       headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));

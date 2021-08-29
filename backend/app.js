@@ -30,10 +30,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors({ origin: "http://domainname.mesto.nomoredomains.monster", credentials: true }));
+// app.use(cors({ origin: "http://domainname.mesto.nomoredomains.monster", credentials: true }));
 
 app.use(requestLogger);
 
