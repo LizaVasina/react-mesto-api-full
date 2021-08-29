@@ -139,7 +139,7 @@ function App() {
           })
           history.push('/');
         })
-        .catch(() => history.push('/sign-in'));
+        .catch(() => history.push('/signin'));
     }
   }, [history]);
 
@@ -173,7 +173,7 @@ function App() {
         setInfoPopupStatus(true);
         setTimeout(() => {
           setIsInfoToolTipPopupOpen(false);
-          history.push('/sign-in');
+          history.push('/signin');
         }, 2000);
       })
       .catch(err => {
@@ -186,7 +186,7 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem('jwt');
     setLoggenIn(false);
-    history.push('/sing-in');
+    history.push('/singin');
   }
 
   return (
@@ -196,9 +196,9 @@ function App() {
 
     
       <Switch>
-        <Route path="/sign-up">
+        <Route path="/signup">
           <Header>
-            <Link to="/sign-in" className="header__button header__button_place_sign-up">Войти</Link>
+            <Link to="/signin" className="header__button header__button_place_sign-up">Войти</Link>
           </Header>
           <Register
             onRegister={handleRegister}
@@ -210,9 +210,9 @@ function App() {
             action={"зарегистрировались"}
             ></InfoTooltip>
         </Route>
-        <Route path="/sign-in">
+        <Route path="/signin">
           <Header>
-            <Link to="/sign-up" className="header__button header__button_place_sign-up">Регистрация</Link>
+            <Link to="/signup" className="header__button header__button_place_sign-up">Регистрация</Link>
           </Header>
           <Login
             onLogin={handleLogin}
