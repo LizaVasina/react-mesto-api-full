@@ -2,7 +2,7 @@
   "name": "express-mesto",
   "version": "1.0.0",
   "description": "Бэкенд часть для проекта 'Mesto'",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "lint": "npx eslint .",
     "start": "node app.js",
