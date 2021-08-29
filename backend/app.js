@@ -1,9 +1,13 @@
+const process = require('process')
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const { isURL } = require('validator');
 const cors = require('cors');
+
 
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
@@ -16,7 +20,7 @@ const ValidationError = require('./errors/validation-error');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
@@ -32,6 +36,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ origin: "http://domainname.mesto.nomoredomains.monster", credentials: true }));
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
