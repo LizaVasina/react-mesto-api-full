@@ -5,4 +5,4 @@
 * Публичный IP: 178.154.221.44
 * Доменное имя: domainname.mesto.nomoredomains.monster
 
-[Сайтик тут ⭐️](http://domainname.mesto.nomoredomains.monster/sign-in)
+[Сайтик тут ⭐️](http://domainname.mesto.nomoredomains.monster/signin)
