@@ -14,9 +14,6 @@ module.exports = {
         },
         "ecmaVersion": 12
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
     }
 };
