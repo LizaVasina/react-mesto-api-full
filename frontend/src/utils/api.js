@@ -117,10 +117,10 @@ class Api {
 
 const api = new Api({
   url: 'https://api.domainname.mesto.nomoredomains.monster',
-  headers: {
-    authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
-    'Content-type': 'application/json'
-  }
+  // headers: {
+  //   authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
+  //   'Content-type': 'application/json'
+  // }
 });
 
 export default api;
