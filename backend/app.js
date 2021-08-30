@@ -30,7 +30,17 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-app.use(cors());
+const whiteList = ['http://api.domainname.mesto.nomoredomains.monster', 'https://api.domainname.mesto.nomoredomains.monster'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true)
+    }
+  },
+  credentials: true,
+}
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,6 +48,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors({ origin: "http://domainname.mesto.nomoredomains.monster", credentials: true }));
 
 app.use(requestLogger);
+
+app.use(cors(corsOptions));
 
 app.get('/crash-test', () => {
   setTimeout(() => {

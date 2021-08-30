@@ -13,7 +13,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._url}cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'GET',
       credentials: 'include',
       secure: true,
@@ -23,7 +23,7 @@ class Api {
   }
 
   addCard(cardName, cardLink) {
-    return fetch(`${this._url}cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
       credentials: 'include',
       secure: true,
@@ -37,7 +37,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}cards/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       secure: true,
@@ -47,7 +47,7 @@ class Api {
   }
 
   getProfileData() {
-    return fetch(`${this._url}users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
       secure: true,
@@ -57,7 +57,7 @@ class Api {
   }
 
   updateProfileData(newName, newAbout) {
-    return fetch(`${this._url}users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
       secure: true,
@@ -71,7 +71,7 @@ class Api {
   }
 
   updateProfileAvatar(newAvatar) {
-    return fetch(`${this._url}users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       secure: true,
@@ -84,7 +84,7 @@ class Api {
   }
 
   setLike(cardId) {
-    return fetch(`${this._url}cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: 'PUT',
       credentials: 'include',
       secure: true,
@@ -94,7 +94,7 @@ class Api {
   }
 
   removeLike(cardId) {
-    return fetch(`${this._url}cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       secure: true,
@@ -104,7 +104,7 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, cardLiked) {
-    return fetch(`${this._url}cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: cardLiked ? 'DELETE' : 'PUT',
       credentials: 'include',
       secure: true,
@@ -116,7 +116,7 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://api.domainname.mesto.nomoredomains.monster/',
+  url: 'https://api.domainname.mesto.nomoredomains.monster',
   // headers: {
   //   authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
   //   'Content-type': 'application/json'
