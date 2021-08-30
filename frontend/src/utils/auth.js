@@ -36,14 +36,14 @@ export const login = (data) => {
     .then(res => responseCheck(res))
 }
 
-export const getContent = () => {
+export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         credentials: true,
         headers: {
             "Accept": "application.json",
             "Content-Type": "application/json",
-            // "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(res => responseCheck(res))
