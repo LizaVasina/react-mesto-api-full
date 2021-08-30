@@ -5,6 +5,8 @@ const responseCheck = (response) => response.ok ? response.json() : Promise.reje
 export const register = (data) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
+        credentials: true,
+        secure: true,
         headers: {
             authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
             "Accept": "application.json",
@@ -21,6 +23,8 @@ export const register = (data) => {
 export const login = (data) => {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
+        credentials: true,
+        secure: true,
         headers: {
             authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
             "Accept": "application.json",
@@ -37,6 +41,8 @@ export const login = (data) => {
 export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
+        credentials: true,
+        secure: true,
         headers: {
             "Accept": "application.json",
             "Content-Type": "application/json",
