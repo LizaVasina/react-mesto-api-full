@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const { isURL } = require('validator');
-const cors = require('cors');
+// const cors = require('cors');
 
 
 const usersRouter = require('./routes/users');
@@ -45,7 +45,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors({ origin: "http://domainname.mesto.nomoredomains.monster", credentials: true }));
+// app.use(cors({ origin: "http://domainname.mesto.nomoredomains.monster", credentials: true }));
 
 app.use(requestLogger);
 
