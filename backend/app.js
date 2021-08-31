@@ -30,7 +30,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-const whiteList = ['http://api.domainname.mesto.nomoredomains.monster', 'https://api.domainname.mesto.nomoredomains.monster'];
+const whiteList = ['http://api.domainname.mesto.nomoredomains.monster', 'https://api.domainname.mesto.nomoredomains.monster',
+                  'http://domainname.mesto.nomoredomains.monster', 'https://domainname.mesto.nomoredomains.monster'];
 
 const corsOptions = {
   origin: function (origin, callback) {
