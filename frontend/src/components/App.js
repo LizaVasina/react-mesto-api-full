@@ -165,6 +165,10 @@ function App() {
                 })
             })
         })
+        .catch(err => {
+          localStorage.setItem('loggedIn', 'false');
+          console.log(err);
+        });
     }
   }, [history]);
 
