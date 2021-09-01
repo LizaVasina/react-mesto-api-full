@@ -127,51 +127,6 @@ function App() {
     setIsEditAvatarPopupOpen(true);
   }
 
-  useEffect(() => {
-    // const jwt = localStorage.getItem('jwt');
-    // if (jwt) {
-    //   auth.getContent(jwt)
-    //     .then(res => {
-    //       setLoggenIn(true);
-    //       setData({
-    //         email: res.data.email,
-    //         password: res.data.password
-    //       })
-    //       history.push('/');
-    //     })
-    //     .catch(() => history.push('/sign-in'));
-    // }
-    if (localStorage.loggedIn === 'true') {
-      auth.checkCredentials()
-        .then(res => {
-          setData({
-            email: res.data.email,
-            password: res.data.password
-          })
-
-          return api.getProfileData()
-            .then(res => {
-              setCurrentUser(res);
-
-              return api.getInitialCards()
-                .then(res => {
-                  if (Array.isArray(res)) {
-                    setCards(res);
-                  }
-                })
-                .then(() => {
-                  setLoggenIn(true);
-                  history.push('./');
-                })
-            })
-        })
-        .catch(err => {
-          localStorage.setItem('loggedIn', 'false');
-          console.log(err);
-        });
-    }
-  }, [history]);
-
   function handleLogin (data) {
     auth.login(data)
       .then(res => {
@@ -219,6 +174,53 @@ function App() {
     setLoggenIn(false);
     history.push('/sing-in');
   }
+
+  useEffect(() => {
+    // const jwt = localStorage.getItem('jwt');
+    // if (jwt) {
+    //   auth.getContent(jwt)
+    //     .then(res => {
+    //       setLoggenIn(true);
+    //       setData({
+    //         email: res.data.email,
+    //         password: res.data.password
+    //       })
+    //       history.push('/');
+    //     })
+    //     .catch(() => history.push('/sign-in'));
+    // }
+    console.log('мы в use effect');
+    if (localStorage.loggedIn === 'true') {
+      auth.checkCredentials()
+        .then(res => {
+          console.log('мы в иф');
+          setData({
+            email: res.data.email,
+            password: res.data.password
+          })
+
+          return api.getProfileData()
+            .then(res => {
+              setCurrentUser(res);
+
+              return api.getInitialCards()
+                .then(res => {
+                  if (Array.isArray(res)) {
+                    setCards(res);
+                  }
+                })
+                .then(() => {
+                  setLoggenIn(true);
+                  history.push('./');
+                })
+            })
+        })
+        .catch(err => {
+          localStorage.setItem('loggedIn', 'false');
+          console.log(err);
+        });
+    }
+  }, [history]);
 
   return (
 <div className="App">
