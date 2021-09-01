@@ -16,7 +16,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -26,7 +26,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers,
       headers: {
         'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers,
     })
     .then(res => this.handleOriginalResponse(res));
@@ -53,7 +53,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -63,7 +63,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers,
       headers: {
         'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers,
       headers: {
         'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: 'PUT',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
@@ -106,7 +106,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
-      // secure: true,
+      secure: true,
       // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
