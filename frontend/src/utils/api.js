@@ -1,7 +1,7 @@
 class Api {
   constructor(options) {
     this._url = options.url;
-    this._headers = options.headers;
+    // this._headers = options.headers;
   }
 
   handleOriginalResponse (res) {
@@ -16,8 +16,8 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
       credentials: 'include',
-      secure: true,
-      headers: this._headers
+      // secure: true,
+      // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
   }
@@ -26,8 +26,11 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       credentials: 'include',
-      secure: true,
-      headers: this._headers,
+      // secure: true,
+      // headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: cardName,
         link: cardLink
@@ -40,8 +43,8 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
-      secure: true,
-      headers: this._headers,
+      // secure: true,
+      // headers: this._headers,
     })
     .then(res => this.handleOriginalResponse(res));
   }
@@ -50,8 +53,8 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
-      secure: true,
-      headers: this._headers
+      // secure: true,
+      // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
   }
@@ -60,8 +63,11 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
-      secure: true,
-      headers: this._headers,
+      // secure: true,
+      // headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: newName,
         about: newAbout
@@ -74,8 +80,11 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
-      secure: true,
-      headers: this._headers,
+      // secure: true,
+      // headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: newAvatar
       })
@@ -87,8 +96,8 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: 'PUT',
       credentials: 'include',
-      secure: true,
-      headers: this._headers
+      // secure: true,
+      // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
   }
@@ -97,8 +106,8 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
-      secure: true,
-      headers: this._headers
+      // secure: true,
+      // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
   }
@@ -107,8 +116,8 @@ class Api {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: cardLiked ? 'DELETE' : 'PUT',
       credentials: 'include',
-      secure: true,
-      headers: this._headers
+      // secure: true,
+      // headers: this._headers
     })
     .then(res => this.handleOriginalResponse(res));
   }
