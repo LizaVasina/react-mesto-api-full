@@ -228,7 +228,7 @@ function App() {
     //     .catch(() => history.push('/sign-in'));
     // }
     console.log('мы в use effect', localStorage.loggedIn);
-    if (localStorage.loggedIn) {
+    if (localStorage.loggedIn === true) {
       auth.checkCredentials()
         .then(res => {
           console.log('мы в иф');
