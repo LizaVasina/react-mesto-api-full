@@ -57,5 +57,5 @@ export const checkCredentials = () => { // Проверка токена
       method: 'GET',
       credentials: 'include',
     })
-    .then(res => this._checkResponseData(res));
+    .then(res => this.responseCheck(res));
   }
