@@ -38,7 +38,8 @@ const corsOptions = {
       callback(null, true);
     }
   },
-  credentials: 'include',
+  // credentials: 'include',
+  credentials: true,
 };
 
 

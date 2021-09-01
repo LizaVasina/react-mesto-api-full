@@ -194,7 +194,7 @@ function App() {
   <div className="page">
     <div className="page_content">
 
-    
+    <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <Route path="/sign-up">
           <Header>
@@ -224,7 +224,7 @@ function App() {
             action={"авторизировались"}
             ></InfoTooltip>
         </Route>
-        <CurrentUserContext.Provider value={currentUser}>
+        
         <ProtectedRoute path="/"
                 component={Main}
                 loggedIn={loggedIn}
@@ -253,12 +253,14 @@ function App() {
                 >
         
         </ProtectedRoute>
-        </CurrentUserContext.Provider> 
+         
         
         <Route>
           {!loggedIn ? <Redirect to="/sign-in" /> : <Redirect to="/" />}
         </Route>
       </Switch>
+
+      </CurrentUserContext.Provider>
     
     </div>
         </div>
