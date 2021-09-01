@@ -53,7 +53,7 @@ export const getContent = (token) => {
 }
 
 export const checkCredentials = () => { // Проверка токена
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       credentials: 'include',
     })
