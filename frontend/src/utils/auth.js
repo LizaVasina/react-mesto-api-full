@@ -6,11 +6,11 @@ export const register = (data) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         // credentials: true,
-        // headers: {
-        //     authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
-        //     "Accept": "application.json",
-        //     "Content-Type": "application/json" 
-        // },
+        headers: {
+            // authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
+            "Accept": "application.json",
+            "Content-Type": "application/json" 
+        },
         body: JSON.stringify({
             "password": data.password,
             "email": data.email
@@ -23,11 +23,11 @@ export const login = (data) => {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         // credentials: true,
-        // headers: {
-        //     authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
-        //     "Accept": "application.json",
-        //     "Content-Type": "application/json" 
-        // },
+        headers: {
+            // authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
+            "Accept": "application.json",
+            "Content-Type": "application/json" 
+        },
         body: JSON.stringify({
             "password": data.password,
             "email": data.email
