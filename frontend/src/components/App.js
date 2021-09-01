@@ -177,6 +177,7 @@ function App() {
       .then(res => {
         // localStorage.setItem('jwt', res.token);
         localStorage.setItem('loggedIn', 'true');
+        console.log('залогинились');
         setData({
           email: data.email,
           password: data.password
