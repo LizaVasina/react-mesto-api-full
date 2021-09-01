@@ -38,7 +38,7 @@ const corsOptions = {
       callback(null, true);
     }
   },
-  credentials: true,
+  credentials: 'include',
 };
 
 
