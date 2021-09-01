@@ -127,23 +127,60 @@ function App() {
     setIsEditAvatarPopupOpen(true);
   }
 
+  // ИСПРАВИТЬ ЛОГИН
   function handleLogin (data) {
+    // auth.login(data)
+    //   .then(res => {
+    //     // localStorage.setItem('jwt', res.token);
+    //     localStorage.setItem('loggedIn', true);
+    //     console.log('залогинились', localStorage.loggedIn);
+    //     setData({
+    //       email: data.email,
+    //       password: data.password
+    //     });
+    //     setLoggenIn(true);
+    //     setInfoPopupStatus(true);
+    //     setIsInfoToolTipPopupOpen(true);
+    //     setTimeout(() => {
+    //       setIsInfoToolTipPopupOpen(false);
+    //       history.push('/');
+    //     }, 2000);
+    //   })
+    //   .catch(err => {
+    //     setIsInfoToolTipPopupOpen(true);
+    //     setInfoPopupStatus(false);
+    //     console.log(err)
+    //   });
+
     auth.login(data)
-      .then(res => {
-        // localStorage.setItem('jwt', res.token);
-        localStorage.setItem('loggedIn', true);
-        console.log('залогинились', localStorage.loggedIn);
+      .then(() => {
+        setInfoPopupStatus(true);
+        setIsInfoToolTipPopupOpen(true);
         setData({
           email: data.email,
           password: data.password
         });
         setLoggenIn(true);
-        setInfoPopupStatus(true);
-        setIsInfoToolTipPopupOpen(true);
-        setTimeout(() => {
-          setIsInfoToolTipPopupOpen(false);
-          history.push('/');
-        }, 2000);
+        
+        return api.getProfileData()
+          .then(res => {
+            setCurrentUser(res);
+
+            return api.getInitialCards()
+              .then(res => {
+                if (Array.isArray(res)) {
+                  setCards(res);
+                }
+              })
+              .then(() => {
+                localStorage.setItem('loggedIn', true);
+                setLoggenIn(true);
+                setTimeout(() => {
+                  setIsInfoToolTipPopupOpen(false);
+                  history.push('/');
+                }, 2000);
+              })
+          })
       })
       .catch(err => {
         setIsInfoToolTipPopupOpen(true);
@@ -170,7 +207,8 @@ function App() {
   }
 
   const handleSignOut = () => {
-    localStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
+    localStorage.setItem('loggedIn', false);
     setLoggenIn(false);
     history.push('/sing-in');
   }
