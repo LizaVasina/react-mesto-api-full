@@ -146,7 +146,7 @@ function App() {
   function handleLogin (data) {
     auth.login(data)
       .then(res => {
-        localStorage.setItem('jwt', res.token);
+        // localStorage.setItem('jwt', res.token);
         setData({
           email: data.email,
           password: data.password
