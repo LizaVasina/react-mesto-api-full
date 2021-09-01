@@ -128,18 +128,43 @@ function App() {
   }
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.getContent(jwt)
+    // const jwt = localStorage.getItem('jwt');
+    // if (jwt) {
+    //   auth.getContent(jwt)
+    //     .then(res => {
+    //       setLoggenIn(true);
+    //       setData({
+    //         email: res.data.email,
+    //         password: res.data.password
+    //       })
+    //       history.push('/');
+    //     })
+    //     .catch(() => history.push('/sign-in'));
+    // }
+    if (localStorage.loggedIn === 'true') {
+      auth.checkCredentials()
         .then(res => {
-          setLoggenIn(true);
           setData({
             email: res.data.email,
             password: res.data.password
           })
-          history.push('/');
+
+          return api.getProfileData()
+            .then(res => {
+              setCurrentUser(res);
+
+              return api.getInitialCards()
+                .then(res => {
+                  if (Array.isArray(res)) {
+                    setCards(res);
+                  }
+                })
+                .then(() => {
+                  setLoggenIn(true);
+                  history.push('./');
+                })
+            })
         })
-        .catch(() => history.push('/sign-in'));
     }
   }, [history]);
 

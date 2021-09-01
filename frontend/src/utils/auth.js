@@ -51,3 +51,11 @@ export const getContent = (token) => {
     })
     .then(res => responseCheck(res))
 }
+
+export const checkCredentials = () => { // Проверка токена
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+    .then(res => this._checkResponseData(res));
+  }
