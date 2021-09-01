@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const { isURL } = require('validator');
-// const cors = require('cors');
+const cors = require('cors');
 
 
 const usersRouter = require('./routes/users');
@@ -30,16 +30,16 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-// const whiteList = ['http://api.domainname.mesto.nomoredomains.monster', 'https://api.domainname.mesto.nomoredomains.monster'];
+const whiteList = ['http://api.domainname.mesto.nomoredomains.monster', 'https://api.domainname.mesto.nomoredomains.monster'];
 
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whiteList.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     }
-//   },
-//   credentials: true,
-// }
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    }
+  },
+  credentials: true,
+};
 
 
 app.use(bodyParser.json());
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-//app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
