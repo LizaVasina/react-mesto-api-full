@@ -42,10 +42,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 //   credentials: true,
 // };
 
-//app.use(cors(corsOptions));
-console.log('сервер');
+//app.use(cors(corsOptions))
+
+
 app.use(cors({
-  origin: 'http://domainname.mesto.nomoredomains.monster',
+  origin: 'https://domainname.mesto.nomoredomains.monster',
   credentials: true,
 }));
 
