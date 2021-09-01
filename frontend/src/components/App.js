@@ -131,8 +131,8 @@ function App() {
     auth.login(data)
       .then(res => {
         // localStorage.setItem('jwt', res.token);
-        localStorage.setItem('loggedIn', 'true');
-        console.log('залогинились');
+        localStorage.setItem('loggedIn', true);
+        console.log('залогинились', localStorage.loggedIn);
         setData({
           email: data.email,
           password: data.password
@@ -189,8 +189,8 @@ function App() {
     //     })
     //     .catch(() => history.push('/sign-in'));
     // }
-    console.log('мы в use effect');
-    if (localStorage.loggedIn === 'true') {
+    console.log('мы в use effect', localStorage.loggedIn);
+    if (localStorage.loggedIn === true) {
       auth.checkCredentials()
         .then(res => {
           console.log('мы в иф');
@@ -216,7 +216,7 @@ function App() {
             })
         })
         .catch(err => {
-          localStorage.setItem('loggedIn', 'false');
+          localStorage.setItem('loggedIn', false);
           console.log(err);
         });
     }
