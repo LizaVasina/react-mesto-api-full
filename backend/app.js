@@ -31,18 +31,23 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-const whiteList = ['http://domainname.mesto.nomoredomains.monster', 'https://domainname.mesto.nomoredomains.monster'];
+// const whiteList = ['http://domainname.mesto.nomoredomains.monster', 'https://domainname.mesto.nomoredomains.monster'];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1) {
-      callback(null, true);
-    }
-  },
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whiteList.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     }
+//   },
+//   credentials: true,
+// };
+
+//app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: 'https://domainname.mesto.nomoredomains.monster/',
   credentials: true,
-};
-
-app.use(cors(corsOptions));
+}));
 
 app.use(helmet());
 
