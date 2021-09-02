@@ -7,6 +7,7 @@ function Card(props) {
     const isOwn = props.card.owner === currentUser._id;
     const isLiked = props.card.likes.some(i => i === currentUser._id);
     
+    // ПОЧЕМУ ДОБАВЛЯЕТСЯ КНОПКА УДАЛЕНИЯ АХАХХАХАХАХХА
     const cardDeleteButtonClassName = (
         `card__delete-button ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
     );
@@ -19,6 +20,7 @@ function Card(props) {
     }
 
     function handleLikeClick() {
+        console.log('like in card');
         props.onCardLike(props.card);
     }
 
