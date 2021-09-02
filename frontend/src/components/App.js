@@ -167,8 +167,8 @@ function App() {
         
         return api.getProfileData()
           .then(res => {
-            setCurrentUser(res);
-            console.log(res);
+            setCurrentUser(res.currentUser);
+            console.log(res.currentUser);
 
             return api.getInitialCards()
               .then(res => {
