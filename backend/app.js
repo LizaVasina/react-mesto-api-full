@@ -24,8 +24,6 @@ const auth = require('./middlewares/auth');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(helmet());
-
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -33,7 +31,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-// const whiteList = ['http://domainname.mesto.nomoredomains.monster', 'https://domainname.mesto.nomoredomains.monster'];
+// const whiteList = ['http://domainname.mesto.nomoredomains.monster', 
+//                     'https://domainname.mesto.nomoredomains.monster'];
 
 // const corsOptions = {
 //   origin: (origin, callback) => {
@@ -47,13 +46,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 // app.use(cors(corsOptions))
 
 
-// app.use(cors({
-//   origin: 'https://domainname.mesto.nomoredomains.monster',
-//   credentials: true,
-// }));
-
-
-app.use(cors());
+app.use(cors({
+  origin: 'https://domainname.mesto.nomoredomains.monster',
+  credentials: true,
+}));
+app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -64,11 +61,11 @@ app.use(requestLogger);
 
 
 
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
