@@ -10,7 +10,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import React from 'react';
 
 function Main(props) {
-    const currentInfo = React.useContext(CurrentUserContext);
+    const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <>
@@ -26,12 +26,12 @@ function Main(props) {
           <div className="profile__info">
             <span className = "profile__image-wrapper">
               <button type="button" className="profile__edit-avatar-button" onClick={props.onEditAvatarPopup}></button>
-              <img className="profile__avatar" src={`${currentInfo.currentUser.avatar}`} alt="Фотография профиля"></img>
+              <img className="profile__avatar" src={`${currentUser.avatar}`} alt="Фотография профиля"></img>
             </span>
             <div className="profile__data">
               <div className="profile__text">
-                <h1 className="profile__name">{currentInfo.currentUser.name}</h1>
-                <p className="profile__description">{currentInfo.currentUser.about}</p>
+                <h1 className="profile__name">{currentUser.name}</h1>
+                <p className="profile__description">{currentUser.about}</p>
               </div>
               <button type="button" className="profile__edit-button" onClick={props.onEditProfilePopup}></button>
             </div>
