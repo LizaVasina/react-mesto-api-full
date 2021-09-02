@@ -23,6 +23,7 @@ const auth = require('./middlewares/auth');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+app.set('trust proxy', 1);
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -43,7 +44,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.set('trust proxy', 1);
+
 app.use(cors(corsOptions))
 
 
