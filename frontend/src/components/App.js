@@ -44,6 +44,15 @@ function App() {
       .catch((err) => console.log(err));
     }, []);
 
+    useEffect(() => {
+      api.getProfileData()
+        .then((userDara) => {
+          setCurrentUser(userDara);
+          console.log('мы тут');
+        })
+        .catch((err) => console.log(err))
+    }, []);
+
 
     function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -65,13 +74,7 @@ function App() {
         .catch((err) => console.log(err));
     }
 
-  useEffect(() => {
-    api.getProfileData()
-      .then((userDara) => {
-        setCurrentUser(userDara);
-      })
-      .catch((err) => console.log(err))
-  }, []);
+  
 
   function handleCardClick(cardData) {
     setIsImagePopupOpen(true);
@@ -266,7 +269,7 @@ function App() {
   <div className="page">
     <div className="page_content">
 
-    <CurrentUserContext.Provider value={currentUser}>
+    
       <Switch>
         <Route path="/sign-up">
           <Header>
@@ -296,6 +299,8 @@ function App() {
             action={"авторизировались"}
             ></InfoTooltip>
         </Route>
+
+        <CurrentUserContext.Provider value={currentUser}>
         
         <ProtectedRoute path="/"
                 component={Main}
@@ -325,14 +330,14 @@ function App() {
                 >
         
         </ProtectedRoute>
-         
+        </CurrentUserContext.Provider>
         
         <Route>
           {!loggedIn ? <Redirect to="/sign-in" /> : <Redirect to="/" />}
         </Route>
       </Switch>
 
-      </CurrentUserContext.Provider>
+      
     
     </div>
         </div>
