@@ -4,7 +4,7 @@ import React from 'react';
 function Card(props) {
     const currentUser = React.useContext(CurrentUserContext);
 
-    const isOwn = props.card.owner._id === currentUser._id;
+    const isOwn = props.card.owner === currentUser._id;
     const isLiked = props.card.likes.some(i => i._id === currentUser._id);
     
     const cardDeleteButtonClassName = (
@@ -22,13 +22,13 @@ function Card(props) {
         props.onCardLike(props.card);
     }
 
-    function handlrDeleteClick() {
+    function handleDeleteClick() {
         props.onCardDelete(props.card);
     }
 
     return (
         <article className="card" >
-            <button type="button" className={cardDeleteButtonClassName} onClick={handlrDeleteClick}></button>
+            <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick}></button>
             <button type="button" className="card__popup-button" onClick={handleClick}>
                 <img className="card__picture" src={`${props.card.link}`} alt={props.card.name}></img>
             </button>
