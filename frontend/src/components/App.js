@@ -47,6 +47,7 @@ function App() {
         setCards(newCards);
       })
       .catch((err) => console.log(err));
+      
     }
 
     function handleCardDelete(deletedCard) {
