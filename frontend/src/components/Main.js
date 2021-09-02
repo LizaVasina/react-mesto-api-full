@@ -11,8 +11,6 @@ import React from 'react';
 
 function Main(props) {
     const currentInfo = React.useContext(CurrentUserContext);
-    console.log(currentInfo.currentUser, 'main1');
-    console.log(currentInfo.currentUser.name, 'main');
 
   return (
     <>
