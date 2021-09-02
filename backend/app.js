@@ -24,6 +24,8 @@ const auth = require('./middlewares/auth');
 const { PORT = 3000 } = process.env;
 const app = express();
 
+app.use(helmet());
+
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -31,18 +33,18 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-const whiteList = ['http://domainname.mesto.nomoredomains.monster', 'https://domainname.mesto.nomoredomains.monster'];
+// const whiteList = ['http://domainname.mesto.nomoredomains.monster', 'https://domainname.mesto.nomoredomains.monster'];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1) {
-      callback(null, true);
-    }
-  },
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whiteList.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     }
+//   },
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 
 // app.use(cors({
@@ -50,7 +52,8 @@ app.use(cors(corsOptions))
 //   credentials: true,
 // }));
 
-app.use(helmet());
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
