@@ -42,12 +42,11 @@ function App() {
 
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
-        console.log('like in app');
         const newCards = cards.map(c => c._id === card._id ? newCard : c);
         setCards(newCards);
       })
       .catch((err) => console.log(err));
-      
+
     }
 
     function handleCardDelete(deletedCard) {
