@@ -30,7 +30,7 @@ function Main(props) {
             </span>
             <div className="profile__data">
               <div className="profile__text">
-                <h1 className="profile__name">{props.userData.name}</h1>
+                <h1 className="profile__name">Прив</h1>
                 <p className="profile__description">{currentUser.about}</p>
               </div>
               <button type="button" className="profile__edit-button" onClick={props.onEditProfilePopup}></button>
