@@ -55,11 +55,12 @@ function App() {
 
 
     function handleCardLike(card) {
-      console.log(card._id);
+      console.log('prev', card._id);
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
+        console.log('new', newCard);
         const newCards = cards.map(c => c._id === card._id ? newCard : c);
         setCards(newCards);
       })
@@ -170,7 +171,6 @@ function App() {
         return api.getProfileData()
           .then(res => {
             setCurrentUser(res.currentUser);
-            console.log(res.currentUser);
 
             return api.getInitialCards()
               .then(res => {
