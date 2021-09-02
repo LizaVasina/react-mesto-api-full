@@ -94,8 +94,8 @@ function App() {
   function handleUpdateUser(userInfo) {
     api.updateProfileData(userInfo.name, userInfo.about)
       .then((userInfo) => {
-        console.log(userInfo, 'вывожууужужужу');
-        setCurrentUser(userInfo);
+        console.log(userInfo.data, 'вывожууужужужу');
+        setCurrentUser(userInfo.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
