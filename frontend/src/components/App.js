@@ -97,7 +97,7 @@ function App() {
     api.addCard(cardInfo.name, cardInfo.link)
       .then((newCard) => {
         console.log('добавление', newCard);
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
