@@ -8,8 +8,6 @@ export const register = (data) => {
         credentials: 'include',
         secure: true,
         headers: {
-            // authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
-            // "Accept": "application.json",
             "Content-Type": "application/json" 
         },
         body: JSON.stringify({
@@ -26,8 +24,6 @@ export const login = (data) => {
         credentials: 'include',
         secure: true,
         headers: {
-            // authorization: '7ff747f4-57ba-4d6b-8671-46b7cc0f01d2',
-            // "Accept": "application.json",
             "Content-Type": "application/json" 
         },
         body: JSON.stringify({
@@ -44,9 +40,7 @@ export const getContent = (token) => {
         credentials: 'include',
         secure: true,
         headers: {
-            // "Accept": "application.json",
             "Content-Type": "application/json",
-            // "Authorization": `Bearer ${token}`
         }
     })
     .then(res => responseCheck(res))

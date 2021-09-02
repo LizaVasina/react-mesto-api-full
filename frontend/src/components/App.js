@@ -36,24 +36,6 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-    // useEffect(() => {
-    //   const initialCards = api.getInitialCards();
-    //   initialCards.then((cardsInfo) => {
-    //     setCards(cardsInfo);
-    //   })
-    //   .catch((err) => console.log(err));
-    // }, []);
-
-    // useEffect(() => {
-    //   api.getProfileData()
-    //     .then((userDara) => {
-    //       setCurrentUser(userDara);
-    //       console.log(currentUser);
-    //     })
-    //     .catch((err) => console.log(err))
-    // }, []);
-
-
     function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
@@ -132,31 +114,7 @@ function App() {
     setIsEditAvatarPopupOpen(true);
   }
 
-  // ИСПРАВИТЬ ЛОГИН
   function handleLogin (data) {
-    // auth.login(data)
-    //   .then(res => {
-    //     // localStorage.setItem('jwt', res.token);
-    //     localStorage.setItem('loggedIn', true);
-    //     console.log('залогинились', localStorage.loggedIn);
-    //     setData({
-    //       email: data.email,
-    //       password: data.password
-    //     });
-    //     setLoggenIn(true);
-    //     setInfoPopupStatus(true);
-    //     setIsInfoToolTipPopupOpen(true);
-    //     setTimeout(() => {
-    //       setIsInfoToolTipPopupOpen(false);
-    //       history.push('/');
-    //     }, 2000);
-    //   })
-    //   .catch(err => {
-    //     setIsInfoToolTipPopupOpen(true);
-    //     setInfoPopupStatus(false);
-    //     console.log(err)
-    //   });
-
     auth.login(data)
       .then(() => {
         setInfoPopupStatus(true);
@@ -212,26 +170,12 @@ function App() {
   }
 
   const handleSignOut = () => {
-    // localStorage.removeItem('jwt');
     localStorage.setItem('loggedIn', false);
     setLoggenIn(false);
     history.push('/sing-in');
   }
 
   useEffect(() => {
-    // const jwt = localStorage.getItem('jwt');
-    // if (jwt) {
-    //   auth.getContent(jwt)
-    //     .then(res => {
-    //       setLoggenIn(true);
-    //       setData({
-    //         email: res.data.email,
-    //         password: res.data.password
-    //       })
-    //       history.push('/');
-    //     })
-    //     .catch(() => history.push('/sign-in'));
-    // }
     if (localStorage.loggedIn === true) {
       auth.checkCredentials()
         .then(res => {
