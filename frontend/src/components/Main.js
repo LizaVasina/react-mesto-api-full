@@ -11,6 +11,7 @@ import React from 'react';
 
 function Main(props) {
     const currentUser = React.useContext(CurrentUserContext);
+    console.log(currentUser, 'main');
 
   return (
     <>
@@ -30,7 +31,7 @@ function Main(props) {
             </span>
             <div className="profile__data">
               <div className="profile__text">
-                <h1 className="profile__name">Прив</h1>
+                <h1 className="profile__name">{currentUser.name}</h1>
                 <p className="profile__description">{currentUser.about}</p>
               </div>
               <button type="button" className="profile__edit-button" onClick={props.onEditProfilePopup}></button>
