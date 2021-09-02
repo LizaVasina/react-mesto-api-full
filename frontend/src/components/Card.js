@@ -6,7 +6,7 @@ function Card(props) {
     console.log(currentUser);
     console.log(props.card);
 
-    const isOwn = props.card.owner._id === currentUser._id;
+    const isOwn = props.card.owner._id === currentUser._id || props.card.owner === currentUser._id;
     const isLiked = props.card.likes.some(i => i === currentUser._id);
     
     // ПОЧЕМУ ДОБАВЛЯЕТСЯ КНОПКА УДАЛЕНИЯ АХАХХАХАХАХХА
