@@ -93,7 +93,7 @@ class Api {
   }
 
   setLike(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       credentials: 'include',
       secure: true,
@@ -103,7 +103,7 @@ class Api {
   }
 
   removeLike(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       credentials: 'include',
       secure: true,
@@ -113,7 +113,7 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, cardLiked) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: cardLiked ? 'DELETE' : 'PUT',
       credentials: 'include',
       // secure: true,
