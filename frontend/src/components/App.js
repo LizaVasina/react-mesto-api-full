@@ -104,7 +104,7 @@ function App() {
   function handleUpdateAvatar(avatarInfo) {
     api.updateProfileAvatar(avatarInfo.avatar)
       .then((avatarInfo) => {
-        setCurrentUser(avatarInfo);
+        setCurrentUser(avatarInfo.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
