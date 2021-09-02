@@ -23,7 +23,7 @@ function App() {
   const [data, setData] = React.useState(initialData);
 
   //контекст пользователя
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({ name: '', about: '' });
 
   const [isEditProfilePopupOpen, setIsEditProfileOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -36,22 +36,22 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-    useEffect(() => {
-      const initialCards = api.getInitialCards();
-      initialCards.then((cardsInfo) => {
-        setCards(cardsInfo);
-      })
-      .catch((err) => console.log(err));
-    }, []);
+    // useEffect(() => {
+    //   const initialCards = api.getInitialCards();
+    //   initialCards.then((cardsInfo) => {
+    //     setCards(cardsInfo);
+    //   })
+    //   .catch((err) => console.log(err));
+    // }, []);
 
-    useEffect(() => {
-      api.getProfileData()
-        .then((userDara) => {
-          setCurrentUser(userDara);
-          console.log('мы тут');
-        })
-        .catch((err) => console.log(err))
-    }, []);
+    // useEffect(() => {
+    //   api.getProfileData()
+    //     .then((userDara) => {
+    //       setCurrentUser(userDara);
+    //       console.log(currentUser);
+    //     })
+    //     .catch((err) => console.log(err))
+    // }, []);
 
 
     function handleCardLike(card) {
